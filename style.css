@@ -4,31 +4,70 @@
     box-sizing: border-box;
 }
 
-/* @font-face {
-    font-family: ;
-    src: url();
-} */
-
-/* :root {
-
-} */
-
-body {
-    background-color: red;
+@font-face {
+    font-family: 'lato-heavy';
+    src: url('fonts/lato-heavy-webfont.woff2') format('woff2'),
+         url('fonts/lato-heavy-webfont.woff') format('woff');
+    font-style: normal;
+    font-display: swap;     
 }
 
+@font-face {
+    font-family: 'loto-semibold';
+    src: url('fonts/lato-semibold-webfont.woff2') format('woff2'),
+         url('fonts/lato-semibold-webfont.woff') format('woff');
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'loto-regular';
+    src: url('fonts/lato-regular-webfont.woff2') format('woff2'),
+         url('fonts/lato-regular-webfont.woff') format('woff');
+    font-style: normal;
+    font-display: swap;
+}
+
+html {
+    font-family: 'roboto', sans-serif;
+}
+
+body, h1, h2, p, input, label, textarea {
+    font-family: inherit;
+}
+
+
+:root {
+    --header-font: 'loto-heavy';
+    --nav-font: 'loto-semibold';
+    --main-font: 'loto-regular';
+    --header-font-size: 1.5rem;
+    --nav-welcome-size: 3rem;
+    --nav-font-size: 1.1rem;
+    --main-content-size: 1rem;
+    --logo-size: 5rem;
+    --nav-color: #494D5F
+}
+
+/* svg's */
+nav svg {
+    width: 2rem;
+    fill: whitesmoke;
+}
+
+/* section start */
 section {
     height: 100vh;
     width: 100vw;
     padding: 5px 10px;
-    background-color: aqua;
+    /* background-color: aqua; */
 
 }
 
 section {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 4fr auto;
 }
 
 header {
@@ -39,7 +78,8 @@ header {
 nav {
     grid-column: 1 / 2;
     grid-row: 1 / 3;
-    border: 1px solid red;
+    padding: 10px 5px;
+    background-color: var(--nav-color);
 }
 
 main {
@@ -52,6 +92,106 @@ main {
 footer {
     grid-column: 1 / 3;
     grid-row: 3 / 4;
-    border: 1px solid burlywood;
-    background-color: brown;
+    background-color: var(--nav-color);
 }
+/* section end */
+
+/* header start */
+
+
+/* header end */
+
+/* nav start */
+
+nav p, h2 {
+    font-family: var(--nav-font);
+    font-size: var(--nav-font-size);
+    color: whitesmoke;
+}
+nav {
+    display: grid;
+    grid-template-rows: auto 1fr 1fr;
+    gap: 20px;
+    opacity: 0.5;
+}
+
+nav .welcome {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+nav .welcome svg {
+    width: var(--logo-size);
+}
+
+.welcome h2 {
+    align-self: center;
+    font-size: var(--header-font-size);
+}
+
+nav div > div {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: left;
+    align-items: center;
+    gap: 10px;
+    padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+nav div > div:hover {
+    border: 1px solid whitesmoke;
+    border-radius: 10px;
+    background-color: rgb(80, 80, 107);
+    cursor: pointer;
+}
+
+/* main start */
+/* main end */
+
+/* footer start */ 
+footer svg {
+    width: 3.5rem;
+    fill: whitesmoke;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+
+footer svg:hover {
+    fill: whitesmoke;
+    border: whitesmoke 1px solid;
+    border-radius: 50%;
+    cursor: pointer;
+    align-items: center;
+}
+
+footer {
+    display: grid;
+    grid-template-rows: auto 1px auto;
+    grid-area: 10px;
+    place-items: center;
+    gap: 10px;
+    padding-top: 10px;
+    opacity: 0.5;
+}
+
+footer p {
+    font-family: var(--header-font);
+    font-size: var(--main-content-size);
+    color: whitesmoke;
+}
+
+footer hr {
+    width: 70%;
+    fill: black;
+}
+
+footer .footer_social {
+    font-display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+}
+/* footer end */
