@@ -46,7 +46,8 @@ body, h1, h2, p, input, label, textarea {
     --nav-font-size: 1.1rem;
     --main-content-size: 1rem;
     --logo-size: 5rem;
-    --nav-color: #494D5F
+    --nav-color: #494D5F;
+    --hover-color: #6C738D;
 }
 
 /* svg's */
@@ -67,12 +68,13 @@ section {
 section {
     display: grid;
     grid-template-columns: 1fr 4fr;
-    grid-template-rows: 1fr 4fr auto;
+    grid-template-rows: auto 4fr auto;
 }
 
 header {
     grid-column: 2 / 3;
-    border: 1px solid black;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    padding-bottom: 10px;
 }
 
 nav {
@@ -85,7 +87,6 @@ nav {
 main {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
-    border: 1px solid blue;
     overflow-y: auto;
 }
 
@@ -97,12 +98,78 @@ footer {
 /* section end */
 
 /* header start */
+header svg {
+    width: 2.5rem;
+}
 
+header {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+header .logo_container {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    place-items: center;
+}
+
+header .logo_title {
+    font-size: var(--nav-font-size);
+    font-family: var(--header-font);
+    align-self: self-start;
+}
+
+header .logo {
+    width: 4rem;
+    fill: #6C738D;
+}
+
+header .search_bar_container {
+    position: relative;
+    display: grid;
+    grid-template-columns: auto 5fr;
+    align-items: center;
+}
+
+header .search_bar_container input {
+    border: 0;
+    border-radius: 15px;
+    background-color: var(--hover-color);
+    width: 100%;
+    height: 2.5rem;
+    z-index: -1;
+}
+
+.search_bar_container #search {
+    position: absolute;
+    padding-left: 50px;
+    color: whitesmoke;
+}
+
+.search_bar_container .search_icon {
+    fill: whitesmoke;
+}
+
+header .favourate_container {
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.favourate_container p {
+    justify-self: right;
+    font-family: var(--header-font);
+    font-size: var(--nav-font-size);
+}
+
+.favourate_container svg {
+    fill: #6C738D;
+}
 
 /* header end */
 
 /* nav start */
-
 nav p, h2 {
     font-family: var(--nav-font);
     font-size: var(--nav-font-size);
@@ -145,7 +212,7 @@ nav div > div {
 nav div > div:hover {
     border: 1px solid whitesmoke;
     border-radius: 10px;
-    background-color: rgb(80, 80, 107);
+    background-color: var(--hover-color);
     cursor: pointer;
 }
 
@@ -161,7 +228,7 @@ footer svg {
 }
 
 footer svg:hover {
-    fill: whitesmoke;
+    fill: var(--hover-color);
     border: whitesmoke 1px solid;
     border-radius: 50%;
     cursor: pointer;
@@ -195,3 +262,4 @@ footer .footer_social {
     gap: 20px;
 }
 /* footer end */
+
