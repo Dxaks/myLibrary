@@ -49,7 +49,7 @@
                         <title>plus-circle</title>
                         <path d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
                     </svg>
-                    <p class="menu">Add</p>
+                    <p class="menu">Bookmark</p>
                 </div>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -58,13 +58,27 @@
                     </svg>
                     <p class="menu">Favourate</p>
                 </div>
-                <div>
+                <div class="create">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>note-plus</title>
                         <path d="M19 13C19.7 13 20.37 13.13 21 13.35V9L15 3H5C3.89 3 3 3.89 3 5V19C3 20.11 3.9 21 5 21H13.35C13.13 20.37 13 19.7 13 19C13 15.69 15.69 13 19 13M14 4.5L19.5 10H14V4.5M23 18V20H20V23H18V20H15V18H18V15H20V18H23Z" />
                     </svg>
                     <p class="menu">Create</p>
                 </div>
+                <dialog>
+                        <form method="dialog">
+                            <label for="book_name">Book Name</label>
+                            <input type="text" id="book_name" required>
+                            <label for="author">Author</label>
+                            <input type="text" id="author" required>
+                            <label for="year">Year</label>
+                            <input type="text" id="year" maxlength="4" required>
+                            <div>
+                                <button>Cancel</button>
+                                <button>Submit</button>
+                            </div>
+                        </form>
+                </dialog>
                 <div>
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                         <title>history</title>
@@ -122,5 +136,7 @@
             </div>  
         </footer>
     </section>
+
+    <script src="scripts/logic.js"></script>
 </body>
 </html>
