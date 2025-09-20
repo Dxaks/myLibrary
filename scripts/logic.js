@@ -13,12 +13,28 @@ function addBookToLibrary(name, author, year) {
    myLibrary.push(myBook)
 }
 
-addBookToLibrary('Anatomy', 'By Fisher', 1998)
-addBookToLibrary('Physiology', 'By Usher', 2019)
-addBookToLibrary('Physics', 'By Michael', 2023)
+addBookToLibrary('Principles of internal medicine', 'By Harrison', 2025)
+addBookToLibrary('Current Medical Diagnosis', 'By Michael W. et al', 2019)
+addBookToLibrary('Washington Manual of Medicine', 'Wikipedia', 2025)
+addBookToLibrary('The Merck Manual of Diagnosis and Therapy', 'By Robert S. Porter', 2020)
+addBookToLibrary('Oxford Handbook of Clinical Medicine', 'By Murray Longmore', 2020)
+addBookToLibrary('Kumar and Clark Clinical Medicine', 'By Parveen Kumar', 2021)
+addBookToLibrary('Clinical Microbiology Made Ridiculously Simple', 'By Mark Gladwin', 2019)
+addBookToLibrary('Pathophysiology of Disease: An Introduction to Clinical Medicine', 'By Gary D. Hammer', 2020)
+addBookToLibrary('The Only EKG Book Youll Ever Need', 'By Malcolm S. Thaler', 2018)
+addBookToLibrary('Rapid Interpretation of EKGs', 'By Dale Dubin', 2018)
+addBookToLibrary('Tintinallis Emergency Medicine: A Comprehensive Study Guide', 'By Judith E. Tintinalli', 2020)
+addBookToLibrary('Robbins Basic Pathology', 'By Kumar, Abbas, Aster', 2018)
+addBookToLibrary('Robbins and Cotran Pathologic Basis of Disease', 'By Vinay Kumar', 2019)
+addBookToLibrary('Gray Anatomy for Students', 'By Richard L. Drake', 2020)
+addBookToLibrary('Netters Anatomy Flash Cards', 'By John T. Hansen', 2018)
+addBookToLibrary('Clinical Anatomy by Regions', 'By Richard S. Snell', 2018)
+addBookToLibrary('Anatomy & Physiology For Dummies', 'By Maggie Norris', 2019)
+addBookToLibrary('Guyton and Hall Textbook of Medical Physiology', 'By John E. Hall', 2020)
+addBookToLibrary('Medical Physiology: A Systems Approach', 'By Hershel Raff', 2021)
+addBookToLibrary('Human Physiology: From Cells to Systems', 'By Lauralee Sherwood', 2018)
 
 const myBooksCard = document.querySelector('main')
-
 function displayBooks(books) {
 
     return books.forEach(book => {
@@ -49,14 +65,23 @@ function displayBooks(books) {
             deleteBtn.textContent = 'Remove';
             bookCard.appendChild(deleteBtn);
 
+        let readBtn = document.createElement('button');
+            readBtn.classList.add('readBtn');
+            readBtn.textContent = 'not read'
+            bookCard.appendChild(readBtn)
+
     deleteBtn.addEventListener('click', (e) => {
         deleteCard(e, myLibrary)
     });
 
+    readBtn.addEventListener('click', (e) => {
+        book.readStatus(e);
+    })
+
             bookName.textContent = book.name;
             author.textContent = book.author;
             year.textContent = book.year;
-            bookId.textContent = book.id;
+            bookId.textContent = `book ID: ${book.id}`;
 
         myBooksCard.appendChild(bookCard);        
     });
@@ -113,6 +138,19 @@ function deleteCard(event, array) {
         array.splice(bookToremove, 1);
     }
    item.remove();
+}
+
+Book.prototype.readStatus = function(event) {
+
+    if (event.target.classList.toggle('read')) {
+        event.target.textContent = 'read';
+        event.target.style.backgroundColor = 'blue';
+        this.isRead = true;
+    } else {
+        event.target.textContent = 'not read'
+        event.target.style.backgroundColor = '';
+        this.isRead = false;
+    }
 }
 
 
