@@ -1,11 +1,14 @@
+// an array that stores each book object
 const myLibrary = [];
 
+// a function constructor for books
 function Book(name, author, year) {
     this.name = name;
     this.author = author;
     this.year = year;
 }
 
+// a function that add each created book into the array (myLibrary)
 function addBookToLibrary(name, author, year) {
    const myBook = new Book(name, author, year)
          myBook.id = crypto.randomUUID().
@@ -13,6 +16,7 @@ function addBookToLibrary(name, author, year) {
    myLibrary.push(myBook)
 }
 
+// some custom books to show on the display
 addBookToLibrary('Principles of internal medicine', 'By Harrison', 2025)
 addBookToLibrary('Current Medical Diagnosis', 'By Michael W. et al', 2019)
 addBookToLibrary('Washington Manual of Medicine', 'Wikipedia', 2025)
@@ -34,9 +38,11 @@ addBookToLibrary('Guyton and Hall Textbook of Medical Physiology', 'By John E. H
 addBookToLibrary('Medical Physiology: A Systems Approach', 'By Hershel Raff', 2021)
 addBookToLibrary('Human Physiology: From Cells to Systems', 'By Lauralee Sherwood', 2018)
 
+// container that hold books in form of cards
 const myBooksCard = document.querySelector('main')
+// function that display books 
 function displayBooks(books) {
-
+// array method to loop through each book and create elements based on book properties
     return books.forEach(book => {
         let bookCard = document.createElement('div');
             bookCard.classList.add('card');
@@ -69,11 +75,11 @@ function displayBooks(books) {
             readBtn.classList.add('readBtn');
             readBtn.textContent = 'not read'
             bookCard.appendChild(readBtn)
-
+// delete btn for removing books from the array and the DOM
     deleteBtn.addEventListener('click', (e) => {
         deleteCard(e, myLibrary)
     });
-
+// read btn to toggle read status for book
     readBtn.addEventListener('click', (e) => {
         book.readStatus(e);
     })
@@ -86,26 +92,29 @@ function displayBooks(books) {
         myBooksCard.appendChild(bookCard);        
     });
 }
-
+// event handler to display custom books for each load
 document.addEventListener('DOMContentLoaded', () => {
     displayBooks(myLibrary)
 })
 
+// dialog, btn, and form btn (cancel / submit) 
 const dialogBox = document.querySelector('dialog');
 const createBtn = document.querySelector('.create');
 const formBtn = document.querySelectorAll('form button')
 
+// event handler to show the dialog
 createBtn.addEventListener('click', () => {
     dialogBox.showModal()
     let focusBtn = formBtn[1]
         focusBtn.focus();
 });
 
+// function that loops through each form btn
 formBtn.forEach(btn => {
     btn.addEventListener('click', (e) => {
 
         e.preventDefault()
-
+        // userInput for to create new book
         const userInputName = document.getElementById('book_name').value;
         const userInputAuthor = document.getElementById('author').value;
         const userInputYear = document.getElementById('year').value;
@@ -113,7 +122,7 @@ formBtn.forEach(btn => {
         if (e.target.textContent === 'Cancel') {
             dialogBox.close()
         } 
-        else if (e.target.textContent === 'Submit' && (!userInputName ||                  !userInputAuthor || !userInputYear) ) {
+        else if (e.target.textContent === 'Submit' && (!userInputName || !userInputAuthor || !userInputYear) ) {
             return;
         }
         else if (e.target.textContent === 'Submit') {
@@ -128,6 +137,7 @@ formBtn.forEach(btn => {
     })
 })
 
+// function that removes book from the array and the DOM
 function deleteCard(event, array) {
     let item = event.target.parentElement;
     let dataAttribute = item.getAttribute('data-id');
@@ -140,6 +150,7 @@ function deleteCard(event, array) {
    item.remove();
 }
 
+// prototype for each book read status attached to the constructor function
 Book.prototype.readStatus = function(event) {
 
     if (event.target.classList.toggle('read')) {
